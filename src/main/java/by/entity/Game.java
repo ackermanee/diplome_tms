@@ -1,15 +1,6 @@
-package org.entity;
+package by.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.criteria.Order;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -33,8 +24,6 @@ public class Game {
     @JoinColumn(name = "publisher_id", nullable = false)
     private Publisher publisher;
 
-    @OneToMany(mappedBy = "game")
-    private List<Orders> orders;
 
     // added this field to map the game category maps
     @OneToMany(mappedBy="game")
