@@ -75,10 +75,69 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item"
-                                               th:href="@{/admin/delete(id=${user.id})}">Удалить</a></li>
+                                               th:href="@{/admin/deleteCategory(id=${user.id})}">Удалить</a></li>
                                     </ul>
                                 </div>
                                     </span>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+
+
+
+
+
+
+
+            <br>
+            <h1 align="center">Список категорий</h1>
+            <br>
+
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#allUsers1">Все категории</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="allUsers1">
+                    <div class="table-container">
+                        <table border="1" align="center">
+                            <thead>
+                            <tr>
+                                <th>Название</th>
+                                <th>Описание</th>
+                                <th>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody class="elastic">
+                            <tr th:each="category : ${categories}">
+                                <td th:text="${category.categoryName}"></td>
+                                <td th:text="${category.categoryDescription}"></td>
+                                <td>
+                                    <!--                                  <li><a th:if="${user.id == 1 || user.id == 15}" href="/admin" class="nav-link px-2 link-body-emphasis">Администратор</a></li>
+                                    -->
+                                    <!--                            <span th:case="1">Администратор</span>-->
+                                    <!--                            <span th:case="15">Администратор</span>-->
+                                    <span th:if="${user.id == 1}">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                            Опции
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item"
+                                                   th:href="@{/admin/deleteCategory(id=${category.id})}">Удалить</a></li>
+                                        </ul>
+                                    </div>
+                                        </span>
 
                                 </td>
                             </tr>

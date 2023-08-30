@@ -14,54 +14,54 @@
 <main class="form-signin w-100 m-auto">
     <center>
         <form th:action="@{/registration}" method="POST" th:object="${userDTO}" style="width: 350px">
-            <h1 class="h3 mb-3 fw-normal" style="text-align: center">Registration</h1>
+            <h1 class="h3 mb-3 fw-normal" style="text-align: center">Регистрация</h1>
 
             <div class="form-floating">
                 <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
                 <input type="text" id="name" name="name" th:value="*{name}" required class="form-control"
-                       placeholder="Name">
-                <label for="name">Name</label>
+                       placeholder="Имя">
+                <label for="name">Имя</label>
             </div>
 
             <div class="form-floating">
                 <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="error"></span>
                 <input type="text" id="surname" name="surname" th:value="*{surname}" required class="form-control"
-                       placeholder="Surname">
-                <label for="surname">Surname</label>
+                       placeholder="Фамилия">
+                <label for="surname">Фамилия</label>
             </div>
 
             <div class="form-floating">
                 <span th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" class="error"></span>
                 <input type="text" id="nickname" name="nickname" th:value="*{nickname}" required class="form-control"
-                       placeholder="Nickname">
-                <label for="nickname">Nickname</label>
+                       placeholder="Никнейм">
+                <label for="nickname">Никнейм</label>
             </div>
 
             <div class="form-floating">
                 <span th:if="${#fields.hasErrors('country')}" th:errors="*{country}" class="error"></span>
                 <input type="text" id="country" name="country" th:value="*{country}" required class="form-control"
-                       placeholder="Country">
-                <label for="country">Country</label>
+                       placeholder="Страна">
+                <label for="country">Страна</label>
             </div>
 
             <div class="form-floating">
                 <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="error"></span>
                 <input type="text" id="login" name="login" th:value="*{login}" required class="form-control"
-                       placeholder="Login">
-                <label for="login">Login</label>
+                       placeholder="Логин">
+                <label for="login">Логин</label>
             </div>
 
             <div class="form-floating">
                 <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
                 <input type="email" id="email" name="email" th:value="*{email}" required class="form-control"
-                       placeholder="Email">
-                <label for="email">Email</label>
+                       placeholder="Почта">
+                <label for="email">Почта</label>
             </div>
 
             <div class="form-floating">
                 <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
                 <input type="password" id="password" name="password" required class="form-control"
-                       placeholder="Password">
+                       placeholder="Пароль">
                 <label for="password">Пароль</label>
             </div>
 
@@ -73,10 +73,10 @@
                 <label for="confirmPassword">Подтвердите пароль</label>
             </div>
 
-            <button class="btn btn-primary w-100 py-2" type="submit" style="height: 40px">Sign up</button>
+            <button class="btn btn-primary w-100 py-2" type="submit" style="height: 40px">Регистрация</button>
             <div style="margin-top: 10px">
 
-                <p>Registered already?<a href="/login">Sign in</a></p>
+                <p>Уже зарегестрировались?<a href="/login"> Вход</a></p>
             </div>
             <p class="mt-2 mb-1 text-body-secondary">© 2023</p>
 

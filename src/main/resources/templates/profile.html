@@ -13,30 +13,58 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-<main>
-    <center>
-        <div style="align-content: inherit" class="col-md-4">
-            <h2 th:text="'Ваше имя = ' + ${user.name} + '!'"></h2>
-        </div>
-        <div style="align-content: inherit" class="col-md-4">
-            <h2 th:text="'Ваша фамилия = ' + ${user.surname} + '!'"></h2>
-        </div>
-        <div style="align-content: inherit" class="col-md-4">
-            <h2 th:text="'Ваш никнейм = ' + ${user.nickname} + '!'"></h2>
-        </div>
-        <div style="align-content: inherit" class="col-md-4">
-            <h2 th:text="'Ваша страна = ' + ${user.country} + '!'"></h2>
-        </div>
-        <div style="align-content: inherit" class="col-md-4">
-            <t th:text="'Ваш пароль = ' + ${user.password} + '!'"></t>
-        </div>
-        <div style="align-content: inherit" class="col-md-4">
-            <h2 th:text="'Ваш логи = ' + ${user.login} + '!'"></h2>
-        </div>
-        <div style="align-content: inherit" class="col-md-4">
-            <h2 th:text="'Ваша почта = ' + ${user.email} + '!'"></h2>
-        </div>
-    </center>
+<main style="margin-top: 75px">
+
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: grey;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+        button:hover, a:hover {
+            opacity: 0.7;
+        }
+    </style>
+    <div class="card">
+        <img src="/static/person.png" alt="John" style="width:100%">
+        <h1 th:text="${user.nickname}"> </h1>
+        <p th:text="${user.name}+' '+${user.surname}" class="title" ></p>
+        <p th:text="${user.country}" class="title" ></p>
+        <p th:text="${user.email}" class="title" ></p>
+        <p>
+            <button>Редактировать</button>
+        </p>
+    </div>
+
 </main>
 </body>
 </html>

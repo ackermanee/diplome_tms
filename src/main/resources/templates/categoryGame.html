@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/commonStyle.css">
+    <title>Шутеры</title>
+</head>
+<body>
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        width: 75%;
+    }
+
+    h2 {
+        text-align: center;
+        width: 100%;
+    }
+</style>
+<header th:insert="blocks/header :: header"></header>
+<center style="margin-top: 100px">
+    <h1 th:text="'Название категории ' + ${category.categoryName} + '!'"></h1>
+    <br>
+    <div class="card">
+        <h2 th:text="'Описание категории: ' + ${category.categoryDescription} + '!'"></h2>
+    </div>
+    <br>
+    <tr th:each="game : ${game}">
+        <th th:text="${game.name}"></th>
+        <th th:text="${game.developer}"></th>
+        <th th:text="${game.price}"></th>
+
+        <!--        <th><a th:href="@{/category/categoryGame(id=${category.id})}">Игры</a></th>-->
+    </tr>
+
+</center>
+
+
+</body>
+</html>

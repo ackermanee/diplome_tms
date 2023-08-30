@@ -20,9 +20,7 @@ public class AdminManager {
 @Autowired
 private UserDao userDao;
 
-    public User findByRole(String role){
-        return userDao.getByRole(role);
-    }
+
     public List<String> getUsersLog() {
         File file = new File("myApp.log");
         ArrayList<String> logs = new ArrayList<>();

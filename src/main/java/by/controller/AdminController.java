@@ -1,8 +1,11 @@
 package by.controller;
 
+import by.dao.CategoryDao;
 import by.dao.UserDao;
+import by.entity.Category;
 import by.entity.User;
 import by.manager.AdminManager;
+import by.manager.CategoryManager;
 import by.manager.ReviewManager;
 import by.manager.UserManager;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +28,16 @@ public class AdminController {
 
 
     @Autowired
+    private CategoryManager categoryManager;
+
+
+
+    @Autowired
     private UserDao userDao;
+
+
+    @Autowired
+    private CategoryDao categoryDao;
 
     @Autowired
     private AdminManager adminManager;
@@ -36,7 +48,9 @@ public class AdminController {
     @GetMapping
     public String getUserList(Principal principal, ModelMap map) {
         User user = userManager.findByLogin(principal.getName());
+
         map.put("user", user);
+        map.put("categories", categoryManager.getCategory());
         map.put("logs", adminManager.getUsersLog());
         map.put("users", userManager.getUsers());
         return "adminPanel";
@@ -79,6 +93,13 @@ public class AdminController {
         return "redirect:/admin";
     }
 
+    @GetMapping("/deleteCategory")
+    public String deleteCategoryById (@RequestParam("id") int categoryId) {
+        Category category = categoryManager.getById(categoryId);
+        categoryDao.deleteCategory(categoryId);
+        log.info("Категория " + category.getCategoryName() + " была удалена из системы");
+        return "redirect:/admin";
+    }
 }
 
 

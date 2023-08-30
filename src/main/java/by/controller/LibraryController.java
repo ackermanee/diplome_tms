@@ -15,9 +15,8 @@ import java.security.Principal;
 
 @Slf4j
 @Controller
-@RequestMapping("/profile")
-public class ProfileController {
-
+@RequestMapping("/library")
+public class LibraryController {
 
 
     @Autowired
@@ -25,8 +24,7 @@ public class ProfileController {
 
 
     @GetMapping
-    public String getProfile(Principal principal, ModelMap map,
-        @RequestParam(value = "error", required = false) String error) {
+    public String getLibrary(Principal principal, ModelMap map, @RequestParam(value = "error", required = false) String error) {
         User user = userManager.findByLogin(principal.getName());
         map.put("user", user);
         return "profile";

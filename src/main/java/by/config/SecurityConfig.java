@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/admin").hasAuthority("ADMIN") // Используем hasAuthority() вместо hasRole()
-                .antMatchers("/home").hasAnyAuthority("USER", "ADMIN") // Используем hasAnyAuthority() вместо hasAnyRole()
+                .antMatchers("/home", "/category").hasAnyAuthority("USER", "ADMIN") // Используем hasAnyAuthority() вместо hasAnyRole()
 
                 .antMatchers("/registration", "/home").permitAll()
                 .anyRequest().authenticated()

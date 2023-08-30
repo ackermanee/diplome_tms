@@ -10,6 +10,78 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
+<style>
+    .adaptivny-slayder {
+        position: relative;
+        max-width: 680px;
+        margin: 50px auto;
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.75);
+    }
+
+    .adaptivny-slayder input[name="kadoves"] {
+        display: none;
+    }
+
+    .kadoves {
+        position: absolute;
+        left: 0;
+        bottom: -40px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .kadoves label {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        cursor: pointer;
+        margin: 0 3px;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, .8);
+        border-radius: 50%;
+        border: 5px solid #2f363c;
+        background-color: #738290;
+    }
+
+    #slaid1:checked~.kadoves label[for="slaid1"] {
+        background-color: white;
+    }
+
+    #slaid2:checked~.kadoves label[for="slaid2"] {
+        background-color: white;
+    }
+
+    #slaid3:checked~.kadoves label[for="slaid3"] {
+        background-color: white;
+    }
+
+    .adaptivny-slayder-lasekun {
+        overflow: hidden;
+
+    }
+
+    .abusteku-deagulus {
+        display: flex;
+        width: 100%;
+        transition: all 0.5s;
+    }
+
+    .abusteku-deagulus img {
+        width: 100%;
+        flex-shrink:0;
+    }
+
+    #slaid1:checked~adaptivny-slayder-lasekun abusteku-deagulus {
+        transform: translate(0);
+    }
+
+    #slaid2:checked~.adaptivny-slayder-lasekun .abusteku-deagulus {
+        transform: translateX(-100%);
+    }
+
+    #slaid3:checked~.adaptivny-slayder-lasekun .abusteku-deagulus {
+        transform: translateX(-200%);
+    }
+</style>
 <div class="container mt-5">
     <div class="row">
         <br>
@@ -18,35 +90,7 @@
         </div>
         <div class="col-md-3"></div>
         <div class="col-md-5">
-            <div class="row">
-                <div style="width: 150px" class="stock-container">
-                    <div class="stock-icon">
-                        <i class="fas fa-box"></i>
-                    </div>
-                    <div class="stock-info">
-                        <span class="stock-label">Поставок в пути:</span>
-                        <!--                        <span class="stock-count" th:text="${deliveryQuantity}"></span>-->
-                    </div>
-                </div>
-                <div style="width: 150px" class="stock-container">
-                    <div class="stock-icon">
-                        <i class="fas fa-box"></i>
-                    </div>
-                    <div class="stock-info">
-                        <span class="stock-label">Заказы в обработке:</span>
-                        <!--                        <span class="stock-count" th:text="${orderQuantity}"></span>-->
-                    </div>
-                </div>
-                <div style="width: 150px" class="stock-container">
-                    <div class="stock-icon">
-                        <i class="fas fa-box"></i>
-                    </div>
-                    <div class="stock-info">
-                        <span class="stock-label">Товаров на складе:</span>
-                        <!--                        <span class="stock-count" th:text="${storageQuantity}"></span>-->
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
     <br>
@@ -56,8 +100,8 @@
             <h2>Последние события</h2>
             <div class="log-container">
                 <ul>
-                    <!--                    <li th:each="item, iterStat : ${logs}" th:if="${iterStat.index} &lt; 50">-->
-                    <!--                        <span th:text="${logs[logs.size() - iterStat.index - 1]}"></span>-->
+                                        <li th:each="item, iterStat : ${logs}" th:if="${iterStat.index} &lt; 50">
+                                            <span th:text="${logs[logs.size() - iterStat.index - 1]}"></span>
                     </li>
                 </ul>
             </div>
@@ -71,6 +115,27 @@
                     <!--                        <span th:text="${recommendations[recommendations.size() - iterStat.index - 1]}"></span>-->
                     </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+    <div class="adaptivny-slayder">
+        <input type="radio" name="kadoves" id="slaid1" checked>
+        <input type="radio" name="kadoves" id="slaid2">
+        <input type="radio" name="kadoves" id="slaid3">
+
+        <div class="kadoves">
+            <label for="slaid1"></label>
+            <label for="slaid2"></label>
+            <label for="slaid3"></label>
+        </div>
+
+        <div class="adaptivny-slayder-lasekun">
+
+            <center><h2>Новинки</h2></center>
+            <div class="abusteku-deagulus">
+                <img src="/images/bg.png"/>
+                <img src="/images/fifa.png"/>
+                <img src="/images/valorant.png"/>
             </div>
         </div>
     </div>

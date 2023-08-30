@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous">
+    </script>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<main>
+    <center>
+        <div style="align-content: inherit" class="col-md-4">
+            <h2 th:text="'Ваше имя = ' + ${user.name} + '!'"></h2>
+        </div>
+        <div style="align-content: inherit" class="col-md-4">
+            <h2 th:text="'Ваша фамилия = ' + ${user.surname} + '!'"></h2>
+        </div>
+        <div style="align-content: inherit" class="col-md-4">
+            <h2 th:text="'Ваш никнейм = ' + ${user.nickname} + '!'"></h2>
+        </div>
+        <div style="align-content: inherit" class="col-md-4">
+            <h2 th:text="'Ваша страна = ' + ${user.country} + '!'"></h2>
+        </div>
+        <div style="align-content: inherit" class="col-md-4">
+            <t th:text="'Ваш пароль = ' + ${user.password} + '!'"></t>
+        </div>
+        <div style="align-content: inherit" class="col-md-4">
+            <h2 th:text="'Ваш логи = ' + ${user.login} + '!'"></h2>
+        </div>
+        <div style="align-content: inherit" class="col-md-4">
+            <h2 th:text="'Ваша почта = ' + ${user.email} + '!'"></h2>
+        </div>
+    </center>
+</main>
+</body>
+</html>
