@@ -15,27 +15,12 @@
 <header th:insert="blocks/header :: header"></header>
 <main>
   <center>
-    <div style="align-content: inherit" class="col-md-4">
-      <h2 th:text="'Ваше имя = ' + ${user.name} + '!'"></h2>
-    </div>
-    <div style="align-content: inherit" class="col-md-4">
-      <h2 th:text="'Ваша фамилия = ' + ${user.surname} + '!'"></h2>
-    </div>
-    <div style="align-content: inherit" class="col-md-4">
-      <h2 th:text="'Ваш никнейм = ' + ${user.nickname} + '!'"></h2>
-    </div>
-    <div style="align-content: inherit" class="col-md-4">
-      <h2 th:text="'Ваша страна = ' + ${user.country} + '!'"></h2>
-    </div>
-    <div style="align-content: inherit" class="col-md-4">
-      <t th:text="'Ваш пароль = ' + ${user.password} + '!'"></t>
-    </div>
-    <div style="align-content: inherit" class="col-md-4">
-      <h2 th:text="'Ваш логи = ' + ${user.login} + '!'"></h2>
-    </div>
-    <div style="align-content: inherit" class="col-md-4">
-      <h2 th:text="'Ваша почта = ' + ${user.email} + '!'"></h2>
-    </div>
+    <tr th:each="game : ${game}">
+      <th th:text="${game.name}"></th>
+      <th th:text="${game.developer}"></th>
+      <th th:text="${game.price}+'$'"></th>
+      <br>
+    </tr>
   </center>
 </main>
 </body>

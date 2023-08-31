@@ -16,29 +16,64 @@
         width: 75%;
     }
 
+    th {
+        text-align: center;
+        font-size: 20px;
+        color: #ADB5BD;
+    }
+
     h2 {
         text-align: center;
         width: 100%;
     }
 </style>
 <header th:insert="blocks/header :: header"></header>
+<body>
 <center style="margin-top: 100px">
-    <h1 th:text="'Название категории ' + ${category.categoryName} + '!'"></h1>
+    <h1 th:text="'Название категории: ' + ${category.categoryName}"></h1>
     <br>
     <div class="card">
-        <h2 th:text="'Описание категории: ' + ${category.categoryDescription} + '!'"></h2>
+        <div>
+            <h2 th:text="'Описание категории: ' + ${category.categoryDescription}"></h2>
+        </div>
+        <br>
     </div>
-    <br>
-    <tr th:each="game : ${game}">
-        <th th:text="${game.name}"></th>
-        <th th:text="${game.developer}"></th>
-        <th th:text="${game.price}"></th>
-
-        <!--        <th><a th:href="@{/category/categoryGame(id=${category.id})}">Игры</a></th>-->
-    </tr>
+    <section class="section-second" style="margin-top: 50px">
+        <div class="card">
+            <div>
+                <h2 style="text-align: center;">Список игр</h2>
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th><h2>Название игры</h2></th>
+                    <th><h2>Разработчик</h2></th>
+                    <th><h2>Цена</h2></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <hr align="center" size="2" color="#ff0000"/>
+                <!--                <hr align="center" size="2" color="#ff0000"/>-->
+                <tbody>
+                <tr th:each="game : ${game}">
+                    <th th:text="${game.name}"></th>
+                    <th th:text="${game.developer}"></th>
+                    <th th:text="${game.price}+'$'"></th>
+                    <th>
+                        <form th:action="@{/addGameToWishlist/${game.id}}" method="POST">
+                            <input type="submit" value="Добавить в желаемое">
+                        </form>
+                    </th>
+                    <!--        <th><a th:href="@{/category/categoryGame(id=${category.id})}">Игры</a></th>-->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+    </section>
 
 </center>
 
-
+</body>
 </body>
 </html>

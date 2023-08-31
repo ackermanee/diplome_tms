@@ -13,7 +13,6 @@ import java.util.List;
 import static by.config.FactoryManager.getSessionFactory;
 
 @Repository
-
 public class CategoryDao extends AbstractEntityDao{
 
     @Autowired

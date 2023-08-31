@@ -68,14 +68,15 @@
                                     <!--                            <span th:case="1">Администратор</span>-->
                                     <!--                            <span th:case="15">Администратор</span>-->
                                     <span th:if="${user.id != 1 || user.id != 15}">
-                                <div class="btn-group" role="group">
+                                <div th:if="${user.id != 1 }" class="btn-group" role="group">
                                     <button type="button" class="btn btn-primary dropdown-toggle"
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                         Опции
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item"
-                                               th:href="@{/admin/deleteCategory(id=${user.id})}">Удалить</a></li>
+                                               th:href="@{/admin/deleteUser(id=${user.id})}">Удалить</a></li>
+
                                     </ul>
                                 </div>
                                     </span>
@@ -135,7 +136,70 @@
                                         <ul class="dropdown-menu">
                                             <li><a class="dropdown-item"
                                                    th:href="@{/admin/deleteCategory(id=${category.id})}">Удалить</a></li>
+                                            <li><a class="dropdown-item"
+                                                   th:href="@{/admin/editCategory(id=${category.id})}">Изменить</a></li>
                                         </ul>
+                                    </div>
+                                        </span>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <br>
+            <h1 align="center">Список игр</h1>
+            <br>
+
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#allUsers2">Все игры</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="allUsers2">
+                    <div class="table-container">
+                        <table border="1" align="center">
+                            <thead>
+                            <tr>
+                                <th>Название</th>
+                                <th>Разработчик</th>
+                                <th>Цена</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody class="elastic">
+                            <tr th:each="game : ${game}">
+                                <td th:text="${game.name}"></td>
+                                <td th:text="${game.developer}"></td>
+                                <td th:text="${game.price}"></td>
+                                <td>
+                                    <!--                                  <li><a th:if="${user.id == 1 || user.id == 15}" href="/admin" class="nav-link px-2 link-body-emphasis">Администратор</a></li>
+                                    -->
+                                    <!--                            <span th:case="1">Администратор</span>-->
+                                    <!--                            <span th:case="15">Администратор</span>-->
+                                    <span th:if="${user.id == 1}">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                            Опции
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item"
+                                                   th:href="@{/admin/deleteGame(id=${game.id})}">Удалить</a></li>
+                                            <li><a class="dropdown-item"
+                                                   th:href="@{/admin/editGame(id=${game.id})}">Изменить</a></li>
+
+                                        </ul>
+
                                     </div>
                                         </span>
 

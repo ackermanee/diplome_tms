@@ -25,8 +25,7 @@ public class CategoryManager {
     @Autowired
     private CategoryDao categoryDao;
 
-    @Autowired
-    private CategoryManager categoryManager;
+
     public void save(Category category) {
         categoryDao.save(category);
     }

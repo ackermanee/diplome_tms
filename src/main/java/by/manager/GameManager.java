@@ -4,15 +4,19 @@ package by.manager;
 import by.dao.*;
 //import by.dto.CategoryDTO;
 import by.entity.Game;
+import by.entity.Order;
 import by.manager.CategoryManager;
 import by.dto.UserDTO;
 import by.entity.Category;
 import by.entity.User;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +28,15 @@ public class GameManager {
     private GameDao gameDao;
 
     @Autowired
-    private CategoryManager categoryManager;
+    private OrderDao orderDao;
+
+    @Autowired
+    private UserManager userManager;
+
+    @Autowired
+    private GameManager gameManager;
+
+
     public void save(Game game) {
         gameDao.save(game);
     }
@@ -36,6 +48,7 @@ public class GameManager {
     public Game getById(int id) {
         return gameDao.getById(id, Game.class);
     }
+
 
     public List<Game> getGame() {
         return gameDao.getList();
@@ -68,4 +81,24 @@ public class GameManager {
 ////        }
 ////        productList.clear();
 //    }
+public String deleteGame(int gameId) {
+
+//        List<GameCategoryMap> gameCategoryMapList = gameCategoryMapDao.getList();
+//        for (GameCategoryMap gameCategoryMap : gameCategoryMapList) {
+//            if (gameCategoryMap.getCategory().getId() == gameId) {
+//                gameCategoryMapDao.delete(gameCategoryMap);
+//            }
+//        }
+//        List<Category> categoryList = gameDao.getList();
+//        for (Game game : gameList) {
+//            if (game.getId() == gameId) {
+//                gameDao.delete(game);
+//            }
+//        }
+    Game game = gameManager.getById(gameId);
+    gameManager.delete(game);
+    return null;
+}
+
+
 }

@@ -45,9 +45,12 @@
         }
 
         a {
+            color: #9c9c9c;
             text-decoration: none;
             font-size: 22px;
-            color: black;
+            border: 1px solid gray; /* Синяя рамка вокруг ссылок */
+            padding: 2px; /* Поля вокруг текста */
+            text-decoration: none; /* Скрываем подчёркивание */
         }
 
         button:hover, a:hover {
@@ -60,9 +63,11 @@
         <p th:text="${user.name}+' '+${user.surname}" class="title" ></p>
         <p th:text="${user.country}" class="title" ></p>
         <p th:text="${user.email}" class="title" ></p>
-        <p>
-            <button>Редактировать</button>
-        </p>
+
+        <a th:href="@{/profile/edit}">Редактировать</a>
+<!--        <form th:action="@{/profile/edit}" method="POST">-->
+<!--            <input type="submit" value="Редактировать">-->
+<!--        </form>-->
     </div>
 
 </main>
