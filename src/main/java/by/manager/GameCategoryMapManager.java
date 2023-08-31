@@ -26,9 +26,7 @@ public class GameCategoryMapManager {
 
     @Autowired
     private CategoryManager categoryManager;
-    public void save(GameCategoryMap gameCategoryMap) {
-        gameCategoryMapDao.save(gameCategoryMap);
-    }
+
 
     public void delete(GameCategoryMap gameCategoryMap) {
         gameCategoryMapDao.delete(gameCategoryMap);
@@ -43,28 +41,7 @@ public class GameCategoryMapManager {
     }
 
 
-    public void updateCategory(GameCategoryMap gameCategoryMap) {
-        gameCategoryMapDao.update(gameCategoryMap);
+    public void save(GameCategoryMap gameCategoryMap) {
+        gameCategoryMapDao.save(gameCategoryMap);
     }
-    public void editCategory(GameCategoryMap gameCategoryMap) {
-        gameCategoryMapDao.update(gameCategoryMap);
-    }
-
-//    public void saveCategory(CategoryDTO categoryDto) {
-//        Category category = new Category();
-////        DeliveryProductMap deliveryProductMap = new DeliveryProductMap();
-////        DeliveryStatus deliveryStatus = deliveryStatusDao.getById(1, DeliveryStatus.class);
-//
-//        category.setCategoryName(categoryDto.getCategoryName());
-//        category.setCategoryDescription((categoryDto.getCategoryDescription()));
-//        System.out.println(category);
-//        categoryDao.save(category);
-////        for (int i = 0; i < productList.size(); i++) {
-////            deliveryProductMap.setDelivery(delivery);
-////            deliveryProductMap.setProduct(productManager.getById(productList.get(i).getProductId()));
-////            deliveryProductMap.setQuantity(productList.get(i).getQuantity());
-////            deliveryProductMapDao.save(deliveryProductMap);
-////        }
-////        productList.clear();
-//    }
 }

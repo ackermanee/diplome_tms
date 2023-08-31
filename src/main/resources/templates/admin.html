@@ -42,15 +42,15 @@
         background-color: #738290;
     }
 
-    #slaid1:checked~.kadoves label[for="slaid1"] {
+    #slaid1:checked ~ .kadoves label[for="slaid1"] {
         background-color: white;
     }
 
-    #slaid2:checked~.kadoves label[for="slaid2"] {
+    #slaid2:checked ~ .kadoves label[for="slaid2"] {
         background-color: white;
     }
 
-    #slaid3:checked~.kadoves label[for="slaid3"] {
+    #slaid3:checked ~ .kadoves label[for="slaid3"] {
         background-color: white;
     }
 
@@ -67,18 +67,18 @@
 
     .abusteku-deagulus img {
         width: 100%;
-        flex-shrink:0;
+        flex-shrink: 0;
     }
 
-    #slaid1:checked~adaptivny-slayder-lasekun abusteku-deagulus {
+    #slaid1:checked ~ adaptivny-slayder-lasekun abusteku-deagulus {
         transform: translate(0);
     }
 
-    #slaid2:checked~.adaptivny-slayder-lasekun .abusteku-deagulus {
+    #slaid2:checked ~ .adaptivny-slayder-lasekun .abusteku-deagulus {
         transform: translateX(-100%);
     }
 
-    #slaid3:checked~.adaptivny-slayder-lasekun .abusteku-deagulus {
+    #slaid3:checked ~ .adaptivny-slayder-lasekun .abusteku-deagulus {
         transform: translateX(-200%);
     }
 </style>
@@ -100,8 +100,8 @@
             <h2>Последние события</h2>
             <div class="log-container">
                 <ul>
-                                        <li th:each="item, iterStat : ${logs}" th:if="${iterStat.index} &lt; 50">
-                                            <span th:text="${logs[logs.size() - iterStat.index - 1]}"></span>
+                    <li th:each="item, iterStat : ${logs}" th:if="${iterStat.index} &lt; 50">
+                        <span th:text="${logs[logs.size() - iterStat.index - 1]}"></span>
                     </li>
                 </ul>
             </div>

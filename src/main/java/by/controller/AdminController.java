@@ -142,19 +142,31 @@ public class AdminController {
 
 
 
+    @GetMapping("/admin/addCategory")
+    public String createCategory(ModelMap map) {
+        map.put("categoryDTO", new CategoryDTO());
+        return "createCategory";
+    }
 
+
+    @PostMapping("/admin/addCategory")
+    public String createCategory(@ModelAttribute CategoryDTO categoryDTO) {
+        categoryManager.save(categoryManager.toCategory(categoryDTO));
+        log.info("Категория " + categoryDTO.getCategoryName() + " создана");
+        return "redirect:/admin";
+    }
 
 
 
     @GetMapping("/admin/addGame")
-    public String editCategory(ModelMap map) {
+    public String createGame(ModelMap map) {
         map.put("gameDTO", new GameDTO());
         return "createGame";
     }
 
 
     @PostMapping("/admin/addGame")
-    public String createProduct(@ModelAttribute GameDTO gameDTO) {
+    public String createGame(@ModelAttribute GameDTO gameDTO) {
         gameManager.save(gameManager.toGame(gameDTO));
         log.info("Игра " + gameDTO.getName() + " создана");
         return "redirect:/admin";

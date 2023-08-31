@@ -3,6 +3,10 @@ package by.manager;
 
 import by.dao.CategoryDao;
 //import by.dto.CategoryDTO;
+import by.dto.CategoryDTO;
+import by.dto.GameDTO;
+import by.entity.Game;
+import by.entity.Publisher;
 import by.manager.CategoryManager;
 import by.dao.OrderDao;
 import by.dao.ReviewDao;
@@ -26,6 +30,14 @@ public class CategoryManager {
     private CategoryDao categoryDao;
 
 
+
+    public Category toCategory(CategoryDTO categoryDTO) {
+        Category category = new Category();
+        category.setCategoryName(categoryDTO.getCategoryName());
+        category.setCategoryDescription(categoryDTO.getCategoryDescription());
+
+        return category;
+    }
     public void save(Category category) {
         categoryDao.save(category);
     }

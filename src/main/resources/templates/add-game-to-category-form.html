@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Ваши стили и скрипты здесь -->
+</head>
+<body>
+<h1>Add Game to Category</h1>
+<form th:action="@{/admin/addGameToCategory}" th:object="${gameCategoryMap}" method="post">
+    <div>
+        <label>Category:</label>
+        <select th:field="*{category.id}">
+            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.categoryName}"></option>
+        </select>
+    </div>
+    <div>
+        <label>Game:</label>
+        <select th:field="*{game.id}">
+            <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
+        </select>
+    </div>
+    <button type="submit">Add Game to Category</button>
+</form></body>
+</html>

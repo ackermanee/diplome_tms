@@ -19,8 +19,8 @@
       <div class="form-floating">
         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
         <input type="text" id="name" name="name" th:value="*{name}" required class="form-control"
-               placeholder="Имя">
-        <label for="name">Имя</label>
+               placeholder="Название игры">
+        <label for="name">Название игры</label>
       </div>
 
       <div class="form-floating">

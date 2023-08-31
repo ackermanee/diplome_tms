@@ -14,19 +14,11 @@ import java.util.List;
 @Slf4j
 @Service
 public class AdminManager {
-//
-//    @Autowired
-//    private Helper helper;
-@Autowired
-private UserDao userDao;
-
-
     public List<String> getUsersLog() {
         File file = new File("myApp.log");
         ArrayList<String> logs = new ArrayList<>();
         String line;
         BufferedReader bufferedReader = null;
-
         try {
             Reader reader = new FileReader(file);
             try (reader) {
