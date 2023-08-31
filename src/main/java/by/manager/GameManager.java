@@ -3,12 +3,10 @@ package by.manager;
 
 import by.dao.*;
 //import by.dto.CategoryDTO;
-import by.entity.Game;
-import by.entity.Order;
+import by.dto.GameDTO;
+import by.entity.*;
 import by.manager.CategoryManager;
 import by.dto.UserDTO;
-import by.entity.Category;
-import by.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +34,21 @@ public class GameManager {
     @Autowired
     private GameManager gameManager;
 
+    @Autowired
+    private PublisherManager publisherManager;
 
+    public Game toGame(GameDTO gameDTO) {
+        Game game = new Game();
+        Publisher publisher = publisherManager.getById(1);
+        game.setName(gameDTO.getName());
+        game.setDeveloper(gameDTO.getDeveloper());
+        game.setPrice(gameDTO.getPrice());
+        game.setPublisher(publisher); // Уст
+        return game;
+    }
     public void save(Game game) {
+
+
         gameDao.save(game);
     }
 

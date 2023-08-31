@@ -36,6 +36,7 @@
         text-decoration: none; /* Убираем подчёркивание */
         color: #ADB5BD;
         font-size: 20px;
+
     }
     .card {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -48,6 +49,9 @@
     }
 
     th {
+        border: 1px solid gray; /* Синяя рамка вокруг ссылок */
+        padding: 2px; /* Поля вокруг текста */
+        text-decoration: none; /* Скрываем подчёркивание */
         text-align: center;
         font-size: 20px;
 
@@ -82,10 +86,13 @@
                 <tr th:each="category : ${categories}">
 
                     <th th:text="${category.categoryName}"></th>
+
                     <th><a th:href="@{/category/categoryGame(id=${category.id})}">Игры</a></th>
+
                 </tr>
 
                 </tbody>
+
 
 
             </table>

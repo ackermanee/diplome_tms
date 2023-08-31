@@ -14,8 +14,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @Slf4j
@@ -130,6 +133,30 @@ public class AdminController {
         map.put("category", category);
         map.put("categoryDTO", new CategoryDTO());
 
+        return "redirect:/admin";
+    }
+
+
+
+
+
+
+
+
+
+
+
+    @GetMapping("/admin/addGame")
+    public String editCategory(ModelMap map) {
+        map.put("gameDTO", new GameDTO());
+        return "createGame";
+    }
+
+
+    @PostMapping("/admin/addGame")
+    public String createProduct(@ModelAttribute GameDTO gameDTO) {
+        gameManager.save(gameManager.toGame(gameDTO));
+        log.info("Игра " + gameDTO.getName() + " создана");
         return "redirect:/admin";
     }
 }
