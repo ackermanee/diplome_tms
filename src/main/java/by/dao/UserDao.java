@@ -1,6 +1,6 @@
 package by.dao;
 
-import by.entity.Order;
+import by.entity.Orderr;
 import by.entity.Review;
 import by.entity.User;
 import by.manager.OrderManager;
@@ -37,10 +37,10 @@ public class UserDao extends AbstractEntityDao {
                 reviewDao.delete(review);
             }
         }
-        List<Order> orderList = orderDao.getList();
-        for (Order order : orderList) {
-            if (order.getUser().getId() == userId) {
-                orderDao.delete(order);
+        List<Orderr> orderList = orderDao.getList();
+        for (Orderr orderr : orderList) {
+            if (orderr.getUser().getId() == userId) {
+                orderDao.delete(orderr);
             }
         }
         User user = userManager.getById(userId);

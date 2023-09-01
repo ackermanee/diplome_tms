@@ -40,7 +40,7 @@ public class User extends AbstractEntity {
 
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Order> order = new ArrayList<>();
+    private List<Orderr> order = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Review> review = new ArrayList<>();
@@ -54,7 +54,7 @@ public class User extends AbstractEntity {
         return id;
     }
 
-    public List<Order> getOrder() {
+    public List<Orderr> getOrder() {
         return order;
     }
     public List<Review> getReview() {
@@ -64,7 +64,7 @@ public class User extends AbstractEntity {
         this.id = id;
     }
 
-    public void setOrder(List<Order> order) {
+    public void setOrder(List<Orderr> order) {
         this.order = order;
     }
     // getters and setters

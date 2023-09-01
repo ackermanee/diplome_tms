@@ -24,7 +24,7 @@ public class FactoryManager {
             configuration.addAnnotatedClass(Category.class);
             configuration.addAnnotatedClass(Game.class);
             configuration.addAnnotatedClass(GameCategoryMap.class);
-            configuration.addAnnotatedClass(Order.class);
+            configuration.addAnnotatedClass(Orderr.class);
             configuration.addAnnotatedClass(OrderType.class);
             configuration.addAnnotatedClass(Publisher.class);
             configuration.addAnnotatedClass(Review.class);

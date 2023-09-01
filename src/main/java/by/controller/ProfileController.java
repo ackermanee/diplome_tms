@@ -41,7 +41,7 @@ public class ProfileController {
     @GetMapping("/profile/edit")
     public String editProfilePage(Principal principal, ModelMap map) {
         User user = userManager.findByLogin(principal.getName());
-        map.put("userDTO", new UserDTO());
+        map.put("userDTO", user);
         // UserDTO инициализируется данными текущего пользователя
         return "editProfile";
     }

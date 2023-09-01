@@ -88,7 +88,7 @@ public class AdminController {
     @GetMapping("/admin/editGame{id}")
     public String editProfilePage(@RequestParam("id") int gameId, Principal principal, ModelMap map) {
       Game game = gameManager.getById(gameId);
-        map.put("gameDTO", new GameDTO());
+        map.put("gameDTO", game);
 
         // UserDTO инициализируется данными текущего пользователя
         return "editGame";
@@ -114,8 +114,9 @@ public class AdminController {
     @GetMapping("/admin/editCategory{id}")
     public String editCategory(@RequestParam("id") int categoryId, Principal principal, ModelMap map) {
         Category category = categoryManager.getById(categoryId);
+
 //        Game game = gameManager.getById(gameId);
-        map.put("categoryDTO", new CategoryDTO());
+        map.put("categoryDTO", category);
 
         // UserDTO инициализируется данными текущего пользователя
         return "editCategory";

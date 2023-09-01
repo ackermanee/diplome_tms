@@ -5,7 +5,7 @@ package by.manager;
 import by.dao.OrderDao;
 import by.dao.PublisherDao;
 import by.dto.UserDTO;
-import by.entity.Order;
+import by.entity.Orderr;
 import by.entity.Publisher;
 import by.entity.User;
 import lombok.extern.slf4j.Slf4j;
@@ -24,11 +24,11 @@ public class PublisherManager {
     @Autowired
     private PublisherDao publisherDao;
 
-    public void save(Order order) {
+    public void save(Orderr order) {
         orderDao.save(order);
     }
 
-    public void delete(Order order) {
+    public void delete(Orderr order) {
         orderDao.delete(order);
     }
 
@@ -40,7 +40,7 @@ public class PublisherManager {
 
 
 
-    public List<Order> getOrder() {
+    public List<Orderr> getOrder() {
         return orderDao.getList();
     }
 

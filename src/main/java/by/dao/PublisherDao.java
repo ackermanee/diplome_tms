@@ -1,7 +1,6 @@
 package by.dao;
 
 
-import by.entity.Order;
 import by.entity.Publisher;
 import org.hibernate.Session;
 import org.hibernate.query.Query;

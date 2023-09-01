@@ -1,23 +1,64 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
 <head>
-    <!-- Ваши стили и скрипты здесь -->
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous">
+    </script>
+
+    <style>
+        t {
+            font-size: 25px;
+        }
+
+        select {
+            height: 60px;
+            width: 350px;
+            font-size: 20px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 351px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
 </head>
-<body>
-<h1>Add Game to Category</h1>
-<form th:action="@{/admin/addGameToCategory}" th:object="${gameCategoryMap}" method="post">
-    <div>
-        <label>Category:</label>
-        <select th:field="*{category.id}">
-            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.categoryName}"></option>
-        </select>
-    </div>
-    <div>
-        <label>Game:</label>
-        <select th:field="*{game.id}">
-            <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
-        </select>
-    </div>
-    <button type="submit">Add Game to Category</button>
-</form></body>
+<body class="d-flex align-items-center" style="margin-top: 50px">
+<main class="form-signin w-100 m-auto">
+    <h1 class="h3 mb-3 fw-normal" style="text-align: center">Добавление игры в категорию</h1>
+    <center>
+        <div class="card">
+            <form th:action="@{/admin/addGameToCategory}" th:object="${gameCategoryMap}" method="post"
+                  style="width: 350px">
+                <div class="form-floating">
+                    <t>Категория:</t>
+                    <select th:field="*{category.id}">
+                        <option th:each="category : ${categories}" th:value="${category.id}"
+                                th:text="${category.categoryName}"></option>
+                    </select>
+                </div>
+                <div class="form-floating">
+                    <t>Игра:</t>
+                    <select th:field="*{game.id}">
+                        <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
+                    </select>
+                </div>
+                <button class="btn btn-primary w-100 py-2" type="submit" style="height: 50px">Добавить игру в
+                    категорию
+                </button>
+                <br>
+                <a th:href="@{/admin}">Назад</a>
+            </form>
+        </div>
+
+    </center>
+</main>
+
+</body>
 </html>

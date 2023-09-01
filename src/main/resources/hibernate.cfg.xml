@@ -20,7 +20,7 @@
         <mapping class="by.entity.Review"/>
         <mapping class="by.entity.Publisher"/>
         <mapping class="by.entity.OrderType"/>
-        <mapping class="by.entity.Order"/>
+        <mapping class="by.entity.Orderr"/>
         <mapping class="by.entity.GameCategoryMap"/>
         <mapping class="by.entity.Game"/>
         <mapping class="by.entity.Category"/>

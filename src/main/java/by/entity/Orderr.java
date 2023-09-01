@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "orderr")
-public class Order extends AbstractEntity {
+public class Orderr extends AbstractEntity {
 
 
 

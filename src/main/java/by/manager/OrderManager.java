@@ -3,7 +3,8 @@ package by.manager;
 
 import by.dao.OrderDao;
 import by.dto.UserDTO;
-import by.entity.Order;
+import by.entity.Game;
+import by.entity.Orderr;
 import by.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,23 +21,25 @@ public class OrderManager {
 
 
 
-    public void save(Order order) {
+
+    public void save(Orderr order) {
         orderDao.save(order);
     }
 
-    public void delete(Order order) {
+    public void delete(Orderr order) {
         orderDao.delete(order);
     }
 
-    public Order getById(int id) {
-        return orderDao.getById(id, Order.class);
+    public Orderr getById(int id) {
+        return orderDao.getById(id, Orderr.class);
     }
 
+//    public Orderr findOrderByUserAndGame(User user, Game game){
+//
+//    }
 
 
-
-
-    public List<Order> getOrder() {
+    public List<Orderr> getOrder() {
         return orderDao.getList();
     }
 

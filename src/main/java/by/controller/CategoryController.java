@@ -42,13 +42,6 @@ public class CategoryController {
     @Autowired
     private CategoryManager categoryManager;
 
-//    @GetMapping("/category")
-//    public String getCategory(Principal principal, ModelMap map, @RequestParam(value = "error", required = false) String error) {
-//        User user = userManager.findByLogin(principal.getName());
-//        map.put("user", user);
-//        return "category";
-//    }
-
     @GetMapping("/categories")
     public String getCategories(Principal principal, ModelMap map) {
         User user = userManager.findByLogin(principal.getName());
@@ -85,33 +78,18 @@ public class CategoryController {
             gameList.add(game);
         }
         map.put("game", gameList);
-
-//        map.put("game", gameManager.categoryManager.getById(id).);
-//        map.put("gameCategoryMap", gameCategoryMapManager.getById(id));
         return "categoryGame";
     }
 
 
 
 
-//    //
-//    @GetMapping("/category")
-//    public String getDelivery(@RequestParam(value = "id") Integer id, ModelMap map, Principal principal) {
-//        User user = userManager.findByLogin(principal.getName());
-//        map.put("user", user);
-////        map.put("products", productManager.getProducts());
-////        map.put("providers", providerManager.getProviders());
-////        map.put("productList", deliveryManager.getDeliveryProductLIst(deliveryManager.getById(id)));
-//        map.put("category", categoryManager.getById(id));
-//        return "category";
-//    }
 
     @PostMapping("/categoryGame")
     public String updateDelivery(@ModelAttribute Category category) {
         return "redirect:/category/categoryGame?id=" + category.getId();
     }
 
-//    }
 
 
 

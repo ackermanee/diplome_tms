@@ -2,26 +2,82 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Profile</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-          crossorigin="anonymous">
-  </script>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous">
+    </script>
+    <style>
+        /* Добавим немного стилей для улучшения внешнего вида */
+
+
+        main {
+            margin-top: 80px;
+            width: 70%;
+
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #343a40; /* Цвет фона заголовков */
+            color: white; /* Цвет текста заголовков */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Полосатый фон для четных строк */
+        }
+
+        tr:hover {
+            background-color: #ddd; /* Фон при наведении курсора */
+        }
+    </style>
 </head>
+
 <body>
 <header th:insert="blocks/header :: header"></header>
+<center>
 <main>
-  <center>
-    <tr th:each="game : ${game}">
-      <th th:text="${game.name}"></th>
-      <th th:text="${game.developer}"></th>
-      <th th:text="${game.price}+'$'"></th>
-      <br>
-    </tr>
-  </center>
+<h1>Список желаемого</h1>
+    <br>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Название игры</th>
+                <th>Разработчик</th>
+                <th>Цена</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Используем Thymeleaf для отображения данных -->
+            <tr th:each="game : ${game}">
+                <td th:text="${game.name}"></td>
+                <td th:text="${game.developer}"></td>
+                <td th:text="${game.price} + '$'"></td>
+
+                <td>
+                    <form method="post" th:action="@{/remove-game(id=${game.id})}">
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </main>
+</center>
 </body>
+
 </html>
