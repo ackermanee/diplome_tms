@@ -17,11 +17,11 @@
     <div class="row">
         <div class="col">
             <br>
-            <h2>ПАНЕЛЬ АДМИНИСТРАТОРА</h2>
+            <h2>Панель администратора</h2>
             <br>
             <div class="log-container">
                 <ul>
-                    <li th:each="item, iterStat : ${logs}" th:if="${iterStat.index} &lt; 20">
+                    <li th:each="item, iterStat : ${logs}" th:if="${iterStat.index} &lt; 50">
                         <span th:text="${logs[logs.size() - iterStat.index - 1]}"></span>
                     </li>
                 </ul>

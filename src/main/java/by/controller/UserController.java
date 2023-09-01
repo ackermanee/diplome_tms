@@ -32,10 +32,8 @@ public class UserController {
     @Autowired
     private UserValidator userValidator;
 
-
-
     @GetMapping("/login")
-    public String userLogin(ModelMap map) {
+    public String userLogin(ModelMap map, UserDTO userDTO) {
         map.put("userDTO", new UserDTO());
         return "login";
     }

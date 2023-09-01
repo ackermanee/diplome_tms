@@ -1,11 +1,9 @@
 package by.controller;
 
 import by.dao.CategoryDao;
-import by.dao.GameDao;
 import by.dao.UserDao;
 import by.dto.CategoryDTO;
 import by.dto.GameDTO;
-import by.dto.UserDTO;
 import by.entity.Category;
 import by.entity.Game;
 import by.entity.User;
@@ -14,11 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.validation.Valid;
 import java.security.Principal;
 
 @Slf4j
@@ -29,10 +23,8 @@ public class AdminController {
     @Autowired
     private UserManager userManager;
 
-
     @Autowired
     private CategoryManager categoryManager;
-
 
     @Autowired
     private UserDao userDao;
@@ -46,11 +38,9 @@ public class AdminController {
     @Autowired
     private GameManager gameManager;
 
-
     @GetMapping("/admin")
     public String getUserList(Principal principal, ModelMap map) {
         User user = userManager.findByLogin(principal.getName());
-
         map.put("user", user);
         map.put("categories", categoryManager.getCategory());
         map.put("game", gameManager.getGame());
@@ -58,7 +48,6 @@ public class AdminController {
         map.put("users", userManager.getUsers());
         return "adminPanel";
     }
-
 
     @GetMapping("/admin/deleteUser")
     public String deleteUserById (@RequestParam("id") int userId) {
@@ -84,13 +73,10 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-
     @GetMapping("/admin/editGame{id}")
     public String editProfilePage(@RequestParam("id") int gameId, Principal principal, ModelMap map) {
       Game game = gameManager.getById(gameId);
         map.put("gameDTO", game);
-
-        // UserDTO инициализируется данными текущего пользователя
         return "editGame";
     }
 
@@ -100,55 +86,37 @@ public class AdminController {
         game.setName(gameDTO.getName());
         game.setDeveloper(gameDTO.getDeveloper());
         game.setPrice(gameDTO .getPrice());
-            // Сохранение обновленных данных пользователя в базе данных
         gameManager.editCategory(game);
         map.put("game", game);
         map.put("gameDTO", new GameDTO());
-
+        log.info("Игра " + game.getName() + " была изменена");
         return "redirect:/admin";
     }
-
-
-
 
     @GetMapping("/admin/editCategory{id}")
     public String editCategory(@RequestParam("id") int categoryId, Principal principal, ModelMap map) {
         Category category = categoryManager.getById(categoryId);
-
-//        Game game = gameManager.getById(gameId);
         map.put("categoryDTO", category);
-
-        // UserDTO инициализируется данными текущего пользователя
         return "editCategory";
     }
 
     @PostMapping("/admin/editCategory{id}")
     public String editCategory(@RequestParam("id") int categoryId, @ModelAttribute CategoryDTO categoryDTO, ModelMap map, Principal principal) {
         Category category = categoryManager.getById(categoryId);
-//        Game game = gameManager.getById(gameId);
-
         category.setCategoryName(categoryDTO.getCategoryName());
         category.setCategoryDescription(categoryDTO.getCategoryDescription());
-        // Сохранение обновленных данных пользователя в базе данных
         categoryManager.editCategory(category);
         map.put("category", category);
         map.put("categoryDTO", new CategoryDTO());
-
+        log.info("Категория " + category.getCategoryName() + " была изменена");
         return "redirect:/admin";
     }
-
-
-
-
-
-
 
     @GetMapping("/admin/addCategory")
     public String createCategory(ModelMap map) {
         map.put("categoryDTO", new CategoryDTO());
         return "createCategory";
     }
-
 
     @PostMapping("/admin/addCategory")
     public String createCategory(@ModelAttribute CategoryDTO categoryDTO) {
@@ -157,14 +125,11 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-
-
     @GetMapping("/admin/addGame")
     public String createGame(ModelMap map) {
         map.put("gameDTO", new GameDTO());
         return "createGame";
     }
-
 
     @PostMapping("/admin/addGame")
     public String createGame(@ModelAttribute GameDTO gameDTO) {

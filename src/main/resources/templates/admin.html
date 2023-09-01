@@ -100,7 +100,7 @@
             <h2>Последние события</h2>
             <div class="log-container">
                 <ul>
-                    <li th:each="item, iterStat : ${logs}" th:if="${iterStat.index} &lt; 50">
+                    <li th:each="item, iterStat : ${logs}" th:if="${iterStat.index} &lt; 200">
                         <span th:text="${logs[logs.size() - iterStat.index - 1]}"></span>
                     </li>
                 </ul>

@@ -31,7 +31,6 @@ public class GameCategoryController {
     public String showAddGameToCategoryForm(Model model, ModelMap map) {
         List<Category> categories = categoryManager.getCategoryList();
         List<Game> games = gameManager.getGameList();
-
         model.addAttribute("categories", categories);
         model.addAttribute("games", games);
         model.addAttribute("gameCategoryMap", new GameCategoryMap());
@@ -44,15 +43,10 @@ public class GameCategoryController {
     public String addGameToCategory(@ModelAttribute GameCategoryMap gameCategoryMap,
                                     @RequestParam("category.id") int categoryId,
                                     @RequestParam("game.id") int gameId) {
-        // Получите объекты Category и Game из базы данных по их id
         Category category = categoryManager.getById(categoryId);
         Game game = gameManager.getById(gameId);
-
-        // Установите полученные объекты в gameCategoryMap
         gameCategoryMap.setCategory(category);
         gameCategoryMap.setGame(game);
-
-        // Сохраните информацию о связи игры с категорией в базе данных
         gameCategoryMapManager.save(gameCategoryMap);
         return "redirect:/admin";
     }

@@ -1,8 +1,6 @@
 package by.controller;
 
-
 import by.dao.CategoryDao;
-//import by.dto.CategoryDTO;
 import by.entity.Category;
 import by.entity.Game;
 import by.entity.GameCategoryMap;
@@ -16,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +22,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/category")
 public class CategoryController {
-
 
     @Autowired
     private UserManager userManager;
@@ -52,7 +48,6 @@ public class CategoryController {
         map.put("gameCategoryMap", gameCategoryMap);
         List<Game> game = gameManager.getGameList();
         map.put("game", game);
-//        map.put("providers", providerManager.getProviders().stream().limit(5).collect(Collectors.toList()));
         return "categories";
     }
 
@@ -81,132 +76,9 @@ public class CategoryController {
         return "categoryGame";
     }
 
-
-
-
-
     @PostMapping("/categoryGame")
     public String updateDelivery(@ModelAttribute Category category) {
         return "redirect:/category/categoryGame?id=" + category.getId();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    @GetMapping("/createCategory")
-//    public String createDelivery(ModelMap map, Principal principal) {
-//        User user = userManager.findByLogin(principal.getName());
-//        map.put("user", user);
-//        map.put("categoryDTO", new CategoryDTO());
-////        map.put("games", gameManager.getGames());
-////        map.put("categorylist", categoryManager.getProductList());
-//        return "createDelivery";
-//    }
-//
-//    @PostMapping("/createCategory")
-//    public String saveCategory(@ModelAttribute @Valid CategoryDTO categoryDTO, BindingResult bindingResult,
-//                               Principal principal, RedirectAttributes redirectAttributes) {
-//        User user = userManager.findByLogin(principal.getName());
-//        if (bindingResult.hasErrors()) {
-//            redirectAttributes.addFlashAttribute("errors",bindingResult.getAllErrors());
-//            return "redirect:/category/createCategory";
-//        }
-//        categoryManager.saveCategory(categoryDTO);
-//        return "redirect:/category/categories";
-//    }
-//
-//    @PostMapping("/createCategoryGameList")
-//    public String createDeliveryProductList(@ModelAttribute @Valid DeliveryProductMapDTO deliveryProductMapDTO,
-//                                            BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-//        if (bindingResult.hasErrors()) {
-//            redirectAttributes.addFlashAttribute("errors",bindingResult.getAllErrors());
-//            return "redirect:/delivery/createDelivery";
-//        }
-//        categoryManager.setUpProductList(deliveryProductMapDTO);
-//        return "redirect:/delivery/createDelivery";
-//    }
-//
-//    @GetMapping("/editDelivery")
-//    public String getDelivery(@RequestParam(value = "id") Integer id, ModelMap map, Principal principal) {
-//        User user = userManager.findByLogin(principal.getName());
-//        map.put("user", user);
-//        map.put("products", categoryManager.пу());
-//        map.put("providers", providerManager.getProviders());
-//        map.put("productList", deliveryManager.getDeliveryProductLIst(deliveryManager.getById(id)));
-//        map.put("delivery", deliveryManager.getById(id));
-//        return "delivery";
-//    }
-//
-//
-//
-//    @GetMapping("/deleteDelivery")
-//    public String deleteDelivery(@RequestParam(value = "id") Integer id, Principal principal) {
-//        Delivery delivery = deliveryManager.getById(id);
-//        deliveryManager.delete(delivery);
-//        log.info("Пользователь " + userManager.findByLogin(principal.getName()).getLogin() + " отменил поставку от " +
-//                helper.formatDate(delivery.getDate()));
-//        return "redirect:/delivery/deliveries";
-//    }
-//
-//    @PostMapping("/editDelivery")
-//    public String updateDelivery(@ModelAttribute Delivery delivery) {
-////        deliveryManager.updateDelivery(delivery);
-//        return "redirect:/delivery/editDelivery?id=" + delivery.getId();
-//    }
-//
-//    @GetMapping("/deliveries")
-//    public String getDeliveries(Principal principal, ModelMap map) {
-//        User user = userManager.findByLogin(principal.getName());
-//        map.put("user", user);
-//        if (!user.isApproved()) {
-//            return "approvalWaitingPage";
-//        }
-//        List<Delivery> deliveries = deliveryManager.getDeliveryList();
-//        deliveries.sort(Comparator.comparing(Delivery::getDate));
-//        map.put("deliveries", deliveries);
-//        map.put("providers", providerManager.getProviders().stream().limit(5).collect(Collectors.toList()));
-//        return "deliveries";
-//    }
-//
-//    @GetMapping("/takeDelivery")
-//    public String takeDelivery(@RequestParam("id") Integer id, Principal principal) {
-//        Delivery delivery = deliveryManager.getById(id);
-//        deliveryManager.takeDelivery(delivery);
-//        log.info("Пользователь " + userManager.findByLogin(principal.getName()).getLogin() + " принял поставку от " +
-//                helper.formatDate(delivery.getDate()));
-//        return "redirect:/storage";
-//    }
-//
-//    @GetMapping("/deleteProducts")
-//    public String deleteProduct() {
-//        deliveryManager.deleteProductList();
-//        return "redirect:/delivery/createDelivery";
-//    }
 }
 
